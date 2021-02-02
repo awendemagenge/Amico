@@ -50,14 +50,12 @@
                         <tr>
                             <th>#</th>
                             <th>ISBN</th>
-                            <th>Book title
-                            <th>
-                            <th>Overdue fee
-                            <th>
-                            <th>Publisher
-                            <th>
-                            <th>Date Published
-                            <th>
+                            <th style="text-align: right;">Book title</th>
+                            <th></th>
+                            <th style="text-align: right">Overdue fee </th>
+                            <th style="text-align:right">Publisher</th>
+                            <th style="text-align: right;">Date Published</th>
+                            
                         </tr>
                         <table class="table table-stripped">
                             <tbody id="data">
@@ -77,16 +75,17 @@
                 .then(data => {
                     console.log('Success:', data);
                     if (data.length > 0) {
+                        let count=1
                         let temp = " "
                         data.forEach(element => {
                             temp += "<tr>"
-                            temp += "<td>" + element.bookId + "</td>"
+                            temp += "<td>" + count+ "</td>"
                             temp += "<td>" + element.isbn + "</td>"
                             temp += "<td>" + element.title + "</td>"
-                            temp += "<td>" + element.overdueFee + "</td>"
+                            temp += "<td style='text-align:left'>$" + element.overdueFee + "</td>"
                             temp += "<td>" + element.publisher + "</td>"
                             temp += "<td>" + element.datePublished + "</td><tr>"
-
+                             count++
                         });
                         document.getElementById("data").innerHTML = temp
                     }
@@ -97,14 +96,13 @@
     </body>
 
 
-</body>
+
 
 <div class="footer">
 
     <h6> Amanuel Wendemagenge :::CS418 DBSD &copy;
-        <div class="alignright">January 2021</div>
-    </h6>
-</div>
+     <div class="alignright">January 2021</div></h6>
+ </div>
 
 
 </html>

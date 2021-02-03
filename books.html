@@ -32,9 +32,9 @@
 
     <body>
         <div class="container">
-            <h2 style="color: deepskyblue;text-decoration: underline;">Books in our collection <div class="alignright">
-                    <a class="div1" href="newform.html"
-                        style="color: rgb(36, 38, 39);text-decoration: underline; font-size: 5mm;">Add new book</a>
+            <h2 style="color: deepskyblue;text-decoration: underline;">Books in our collection
+                <div class="alignright">
+                    <a class="div1" href="newform.html" style="color: rgb(36, 38, 39);text-decoration: underline; font-size: 5mm;">Add new book</a>
 
                 </div>
 
@@ -51,18 +51,17 @@
                             <th>#</th>
                             <th>ISBN</th>
                             <th style="text-align: right;">Book title</th>
-                            <th></th>
                             <th style="text-align: right">Overdue fee </th>
                             <th style="text-align:right">Publisher</th>
                             <th style="text-align: right;">Date Published</th>
-                            
+
                         </tr>
                         <table class="table table-stripped">
                             <tbody id="data">
 
                             </tbody>
                     </thead>
-                </table>
+                    </table>
             </div>
         </div>
 
@@ -75,22 +74,21 @@
                 .then(data => {
                     console.log('Success:', data);
                     if (data.length > 0) {
-                        let count=1
-                        let temp = " "
+                        let count = 1
+                        let temp = ""
                         data.forEach(element => {
                             temp += "<tr>"
-                            temp += "<td>" + count+ "</td>"
+                            temp += "<td>" + count + "</td>"
                             temp += "<td>" + element.isbn + "</td>"
                             temp += "<td>" + element.title + "</td>"
-                            temp += "<td style='text-align:left'>$" + element.overdueFee + "</td>"
+                            temp += "<td>" + element.overdueFee + "</td>"
                             temp += "<td>" + element.publisher + "</td>"
                             temp += "<td>" + element.datePublished + "</td><tr>"
-                             count++
+                            count++
                         });
                         document.getElementById("data").innerHTML = temp
                     }
                 })
-
         </script>
 
     </body>
@@ -98,11 +96,12 @@
 
 
 
-<div class="footer">
+    <div class="footer">
 
-    <h6> Amanuel Wendemagenge :::CS418 DBSD &copy;
-     <div class="alignright">January 2021</div></h6>
- </div>
+        <h6> Amanuel Wendemagenge :::CS418 DBSD &copy;
+            <div class="alignright">January 2021</div>
+        </h6>
+    </div>
 
 
 </html>

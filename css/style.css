@@ -1,12 +1,11 @@
-body{
+body {
     background-color: rgb(246, 238, 238);
-    
-    }
-h3{font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size:25px;
+}
 
-}    
-
+h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+}
 
 .footer {
     float: center;
@@ -17,15 +16,47 @@ h3{font-family: Georgia, 'Times New Roman', Times, serif;
     width: 100%;
     background-color: rgb(135, 138, 138);
     color: white;
-  }
-  .alignright {
+}
+
+.alignright {
     float: right;
     text-align: right;
-    
 }
-  
+
 .div1 {
     width: 150px;
     height: 40px;
     border: 1px solid blue;
-  }
+}
+
+td {
+    border: 20px;
+}
+
+td {
+    border: 10px;
+}
+
+.aligncenter {
+    float: center;
+    text-align: center;
+}
+
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.inline-block {
+    display: inline-block;
+    box-shadow: 398px;
+    width: 14%;
+    border: none;
+    background-color: #e3ebe7;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ca0e0e;
+    margin-right: 2mm
+}

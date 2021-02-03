@@ -28,35 +28,109 @@
             </div>
         </div>
 
+
+
+
+
     </nav>
 
 
-    <div>
-        Book title
-        <input type="text" id="title" size="80">
-    </div>
-    </br>
-    <div>
-        ISBN
-        <input type="text" id="title" size="100">
-    </div>
-    <div>
-        Publisher
-        <input type="text" id="title" size="80">
-    </div>
-    <div>
-        overdueFee per day
-        <input type="text" id="title" size="80">
-    </div>
-    <div>
-        date published
-        <input type="text" id="title" size="80">
-    </div>
+
+    <div class="container">
+        <h3 style="color: deepskyblue;text-decoration: underline;">New Book Form
+            <br/>
+            <h6>
+                <b>Note:</b>Form Fields marked with asterisk(*) are required
+            </h6>
+        </h3>
+
+        <div>
+            *Book title
+            <input type="text" id="title" size="170">
+        </div>
+
+        <div><br /> *ISBN
+            <br />
+            <input type="text" id="isbn" size="70"> *OverdueFee Per Day
+            <input type="text" id="overdueFee" size="55">
+        </div>
+
+        <br />
+        <br />
+        <div>
+            *Publisher <br />
+            <input type="text" id="publisher" size="70"> *Date Published
+            <input type="text" id="datePublished" size="55">
 
 
+        </div>
+    </div>
+    <br />
+    <div class="container" style="text-align: right;">
+        <button class="inline-block" type="button" id="rested">rest</button>
+        <button class="inline-block" type="button" id="saved" style="color: rgb(22, 20, 20);">save</button>
 
+    </div>
 
+    <script>
+        function rest() {
+            document.getElementById("isbn").value = ""
+            document.getElementById("title").value = ""
+            document.getElementById("overdueFee").value = ""
+            document.getElementById("publisher").value = ""
+            document.getElementById("datePublished").value = ""
+        }
+        rest()
 
+        function save() {
+            let ISBN = document.getElementById("isbn").value
+            let Title = document.getElementById("title").value
+            let Overduefee = document.getElementById("overdueFee").value
+            let Publisher = document.getElementById("publisher").value
+            let DatePublished = document.getElementById("datePublished").value
+
+            if (ISBN === "" || Title === "" || Overduefee === "" || Publisher === "" || DatePublished === "") {
+                alert("Please inset Input")
+            } else {
+                fetch('https://elibraryrestapi.herokuapp.com/elibrary/api/book/add', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            "isbn": `${ISBN}`,
+                            "title": `${Title}`,
+                            "overdueFee": `${Overduefee}`,
+                            "publisher": `${Publisher}`,
+                            "datePublished": `${DatePublished}`
+
+                        })
+
+                    }).then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+
+                    })
+
+                function clear() {
+                    document.getElementById("isbn").value = ""
+                    document.getElementById("title").value = ""
+                    document.getElementById("overdueFee").value = ""
+                    document.getElementById("publisher").value = ""
+                    document.getElementById("datePublished").value = ""
+                }
+                clear()
+
+            }
+
+        }
+
+        let loginButton = document.querySelector("#saved");
+        loginButton.addEventListener("click", save);
+
+        let restpage = document.querySelector("#rested")
+        restpage.addEventListener("click", rest)
+    </script>
 
 
 </body>

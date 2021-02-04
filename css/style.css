@@ -29,14 +29,6 @@ h3 {
     border: 1px solid blue;
 }
 
-td {
-    border: 20px;
-}
-
-td {
-    border: 10px;
-}
-
 .aligncenter {
     float: center;
     text-align: center;
@@ -45,6 +37,10 @@ td {
 .table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
+    width: 2750%;
+    border-spacing: fixed;
+    border-spacing: 400mm;
+    table-layout: fixed;
     width: 100%;
 }
 

@@ -1,0 +1,41 @@
+
+<script>
+   // alert("are you sure you want to delete")
+let isdelete = confirm("Are you sure you want to delete?");
+
+//alert( isBoss ); // true if OK is pressed
+
+
+let array= window.location.search.split("=")[1]
+
+if(isdelete===true){
+window.onload=function(){
+    
+
+let x = fetch(`https://elibraryrestapi.herokuapp.com/elibrary/api/book/delete/${array}`,{
+    method: 'DELETE',
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        "isbn": "",
+        "title": "",
+        "overdueFee":  "",
+        "publisher": "",
+        "datePublished":""
+
+    })
+
+}).catch(console.log)
+console.log(`https: //elibraryrestapi.herokuapp.com/elibrary/api/book/update/${array}`)
+}
+}
+
+
+</script>
+
+<meta http-equiv="Refresh" content="0; url='http://127.0.0.1:5500/books.html'"/>
+
+
+
+

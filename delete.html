@@ -1,15 +1,10 @@
-
 <script>
-   // alert("are you sure you want to delete")
-let isdelete = confirm("Are you sure you want to delete?");
-
-//alert( isBoss ); // true if OK is pressed
 
 
 let array= window.location.search.split("=")[1]
 
-if(isdelete===true){
-window.onload=function(){
+let d=confirm(`are you sure you want to delete book number ${array}`)
+if(d===true){
     
 
 let x = fetch(`https://elibraryrestapi.herokuapp.com/elibrary/api/book/delete/${array}`,{
@@ -28,14 +23,123 @@ let x = fetch(`https://elibraryrestapi.herokuapp.com/elibrary/api/book/delete/${
 
 }).catch(console.log)
 console.log(`https: //elibraryrestapi.herokuapp.com/elibrary/api/book/update/${array}`)
+alert("please referesh the page")
 }
-}
-
-
 </script>
 
-<meta http-equiv="Refresh" content="0; url='http://127.0.0.1:5500/books.html'"/>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <nav style="background-color: deepskyblue;" class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="practice.html">The CityLibrary a CS418 Web App Project</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="virtualtour.html">Virtual Tour</a></li>
+                <li><a href="books.html">Books</a></li>
+            </ul>
+            <div class="text-right">
+                <a href="books.html">Welcome,Guests</a>
+            </div>
+        </div>
+
+    </nav>
+
+    <body>
+        <div class="container">
+            <h2 style="color: deepskyblue;text-decoration: underline;">Books in our collection
+                <div class="alignright">
+                    <a class="div1" href="newform.html" style="color: rgb(36, 38, 39);text-decoration: underline; font-size: 5mm;">Add new book</a>
+
+                </div>
 
 
 
 
+            </h2>
+
+
+            <div class="container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>ISBN</th>
+                            <th style="text-align: left;">Book title</th>
+                            <th style="text-align: left">Overdue fee </th>
+                            <th style="text-align:center">Publisher</th>
+                            <th style="text-align: left;">Date Published</th>
+                            <th style="text-align: left;">Edit</th>
+                            <th style="text-align: left;">delete</th>
+
+                        </tr>
+                    </thead>
+                    <table class="table table-stripped">
+                        <tbody id="data">
+                        </tbody>
+                    </table>
+
+            </div>
+        </div>
+
+
+
+        </table>
+        <script>
+            fetch('https://elibraryrestapi.herokuapp.com/elibrary/api/book/list')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    if (data.length > 0) {
+                        let count = 1
+                        let edit = `<a href="Edit.html">Edit</a>`
+                        let Delete = `<a href="delete.html">Delete</a>`
+                        let temp = ""
+                        data.forEach(element => {
+                            temp += "<tr>"
+                            temp += "<td>" + count + "</td>"
+                            temp += "<td>" + element.isbn + "</td>"
+                            temp += "<td>" + element.title + "</td>"
+                            temp += '<td style: "text-align:left">$' + element.overdueFee + "</td>"
+                            temp += '<td style: "text-align:left">' + element.publisher + "</td>"
+                            temp += "<td>" + element.datePublished + "</td>"
+                            count++
+                            temp += "<td>" + `<a href="Edit.html?bookid=${element.bookId}">Edit</a>` + "</td>"
+                            temp += "<td>" + `<a href="delete.html?bookid=${element.bookId}">Delete</a>` + "</td>"
+                          
+                        });
+                        document.getElementById("data").innerHTML = temp
+                    }
+                })
+            let loginButton = document.querySelector("#saved");
+            loginButton.addEventListener("click", save);
+        </script>
+
+    </body>
+
+
+
+
+    <div class="footer">
+
+        <h6> Amanuel Wendemagenge :::CS418 DBSD &copy;
+            <div class="alignright">January 2021</div>
+        </h6>
+    </div>
+
+
+</html>

@@ -90,7 +90,7 @@
                             temp += "<td>" + element.datePublished + "</td>"
                             count++
                             temp += "<td>" + `<a href="Edit.html?bookid=${element.bookId}">Edit</a>` + "</td>"
-                            temp += "<td>" + `<link href="delete.html?bookid=${element.bookId}">Delete>` + "</td>"
+                            temp += "<td>" + `<a href="delete.html?bookid=${element.bookId}">Delete</a>` + "</td>"
                           
                         });
                         document.getElementById("data").innerHTML = temp
